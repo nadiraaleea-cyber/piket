@@ -79,7 +79,7 @@ const valuesFrom=v=>v&&typeof v==='object'?(Array.isArray(v)?v:Object.values(v))
 
 async function profile(){
   const fb=await fbReady;
-   const u=fb.auth.currentUser;
+    const u=await fb.authReady;
   if(!u) throw new Error('Belum login Firebase.');
   const snap=await fb.getValue(r(fb,'apps/piket/users'));
   const users=snap.val()||{};
